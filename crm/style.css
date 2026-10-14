@@ -38,3 +38,9 @@ th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);verti
 .sec{margin:6px 0 18px}.sec h2{font-size:16px;margin:16px 0 6px}.empty{color:var(--mut);padding:10px;background:#fff;border:1px dashed var(--line);border-radius:8px}
 .toast{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;padding:10px 16px;border-radius:8px;z-index:40}
 @media(max-width:700px){.top{gap:8px}.right{margin-left:0}.col{min-width:78vw;max-width:78vw}.hide-m{display:none}.filters input{min-width:100%}}
+.seg2{display:inline-flex;border:1px solid var(--line);border-radius:8px;overflow:hidden;margin:10px 0 0}.seg2 button{border:0;background:#fff;padding:6px 12px;font:inherit;cursor:pointer;color:var(--ink)}.seg2 button.on{background:var(--ink);color:#fff}
+.lanes{overflow-x:auto;padding-bottom:10px}.lanes .lrow{display:grid;grid-template-columns:repeat(var(--n),240px);gap:8px}
+.lhead{position:sticky;top:0;z-index:2}.lhead h3{margin:0;background:#ecebe6;border-radius:8px;padding:8px 10px;font-size:13px;display:flex;justify-content:space-between}.lhead h3 span{color:var(--mut)}
+.lane{margin-top:10px}.laneh{position:sticky;left:0;display:inline-flex;gap:6px;align-items:center;font-weight:700;padding:6px 4px;cursor:pointer;user-select:none}.laneh .cnt{background:var(--red);color:#fff;border-radius:99px;padding:0 8px;font-size:12px}
+.col.cell{min-width:0;max-width:none;min-height:46px}.col.cell.na{background:repeating-linear-gradient(45deg,#f4f3ef,#f4f3ef 6px,#ecebe6 6px,#ecebe6 12px);opacity:.7}
+.lane.coll .col.cell{min-height:22px;padding:4px 8px}

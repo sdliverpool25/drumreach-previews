@@ -1,7 +1,11 @@
 (function(){
 'use strict';
 const $=s=>document.querySelector(s), H=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const LS={tok:'drumreach_crm_pat',base:'drumreach_crm_base',tab:'drumreach_crm_tab',view:'drumreach_crm_view'};
+const LS={tok:'drumreach_crm_pat',base:'drumreach_crm_base',tab:'drumreach_crm_tab',view:'drumreach_crm_view',mode:'drumreach_crm_pipe_mode',col:'drumreach_crm_lanes_collapsed'};
+// Swim lanes for the combined Pipeline: table id -> lane label. Add a table here to get a new lane.
+const LANES={tblcNUFz6N5PaLG8t:'GBP / SEO',tblc1YbbEsnHZd6l2:'AI Consulting'};
+// Preferred pipeline order for the union of Status choices; unknown statuses go after, in table order.
+const STATUS_ORDER=['Research','To call','To contact','Called – no answer','Contacted','Interested','Follow-up due','Meeting booked','Audit sent','Proposal sent','Pilot','Client','Retainer','Called – not interested','Not a fit','Do not contact'];
 // Table roles: field names are resolved against the live schema; missing fields are simply hidden.
 const CFG={
  tblcNUFz6N5PaLG8t:{label:'Trades',todo:'To call',score:'Priority',filters:['Status','County','Town','Trade','Ad status','Job value tier'],
@@ -13,8 +17,13 @@ const CFG={
   edit:['Status','Decision maker','Budget fit','Fit score','Phone','Website','Last contact','Next follow-up','Consent to message','Notes'],
   long:['AI use case','Fit reasoning','Stack signals','Evidence URLs','Headcount source','Stack source','Revenue source'],info:['Headcount','Headcount basis','Revenue','Category','Sector','Town'],addable:true}
 };
-const S={tok:localStorage.getItem(LS.tok)||'',base:localStorage.getItem(LS.base)||'app8zAXrWXaVWxxys',schema:null,tab:localStorage.getItem(LS.tab)||'tblcNUFz6N5PaLG8t',view:localStorage.getItem(LS.view)||'today',recs:{},q:'',flt:{},sort:null,open:null};
-const MOCK=/[?&]mock=1/.test(location.search);const QP=new URLSearchParams(location.search);if(QP.get('view'))S.view=QP.get('view');if(QP.get('tab'))S.tab=QP.get('tab');
+const S={tok:localStorage.getItem(LS.tok)||'',base:localStorage.getItem(LS.base)||'app8zAXrWXaVWxxys',schema:null,tab:localStorage.getItem(LS.tab)||'tblcNUFz6N5PaLG8t',view:localStorage.getItem(LS.view)||'today',mode:localStorage.getItem(LS.mode)||'combined',collapsed:JSON.parse(localStorage.getItem(LS.col)||'{}'),recs:{},q:'',flt:{},sort:null,open:null};
+const MOCK=/[?&]mock=1/.test(location.search);const QP=new URLSearchParams(location.search);if(QP.get('view'))S.view=QP.get('view');if(QP.get('tab'))S.tab=QP.get('tab');if(QP.get('mode'))S.mode=QP.get('mode');
+// Run fn with S.tab temporarily set to tid so per-table helpers (F, has, C, choices...) resolve against that table.
+function inTab(tid,fn){const o=S.tab;S.tab=tid;try{return fn()}finally{S.tab=o}}
+const laneTabs=()=>Object.keys(LANES).filter(id=>S.schema&&S.schema.find(t=>t.id===id));
+const combined=()=>S.view==='kanban'&&S.mode==='combined'&&laneTabs().length>0;
+const tabOf=id=>Object.keys(S.recs).find(t=>S.recs[t].some(r=>r.id===id));
 // ---------- API with rate limit (<=5 req/s) and 429 retry ----------
 let last=0;const GAP=220;
 async function api(path,opt={},tries=0){
@@ -43,9 +52,9 @@ async function loadSchema(){const b=await api('meta/bases/'+S.base+'/tables');S.
 async function loadRecords(id,force){if(S.recs[id]&&!force)return S.recs[id];let all=[],off;
   do{const p=new URLSearchParams({pageSize:'100'});if(off)p.set('offset',off);status('Loading records… '+all.length);
     const b=await api(S.base+'/'+id+'?'+p);all=all.concat(b.records);off=b.offset;}while(off);
-  S.recs[id]=all;status(all.length+' records · '+T().name);return all;}
-async function patch(id,fields){const b=await api(S.base+'/'+S.tab+'/'+id,{method:'PATCH',body:JSON.stringify({fields,typecast:false})});
-  const L=S.recs[S.tab],i=L.findIndex(r=>r.id===id);if(i>=0)L[i]=b;return b;}
+  S.recs[id]=all;status(all.length+' records · '+((S.schema.find(t=>t.id===id)||{}).name||''));return all;}
+async function patch(id,fields,tid){tid=tid||tabOf(id)||S.tab;const b=await api(S.base+'/'+tid+'/'+id,{method:'PATCH',body:JSON.stringify({fields,typecast:false})});
+  const L=S.recs[tid],i=L.findIndex(r=>r.id===id);if(i>=0)L[i]=b;return b;}
 async function create(fields){const b=await api(S.base+'/'+S.tab,{method:'POST',body:JSON.stringify({fields})});S.recs[S.tab].unshift(b);return b;}
 // ---------- helpers ----------
 const val=(r,n)=>r.fields[n];
@@ -60,7 +69,7 @@ function filtered(){let L=S.recs[S.tab]||[];const q=S.q.toLowerCase();
   const s=S.sort||{k:C().score&&has(C().score)?C().score:primary().name,d:-1};
   return L.slice().sort((a,b)=>{const x=val(a,s.k),y=val(b,s.k);if(typeof x==='number'||typeof y==='number')return ((+x||0)-(+y||0))*s.d;return String(x||'').localeCompare(String(y||''))*s.d});}
 // ---------- render ----------
-function nav(){$('#tables').innerHTML=S.schema.map(t=>`<button data-t="${t.id}" class="${t.id===S.tab?'on':''}">${H((CFG[t.id]||{}).label||t.name)}</button>`).join('');
+function nav(){$('#tables').innerHTML=S.schema.map(t=>`<button data-t="${t.id}" class="${t.id===S.tab&&!combined()?'on':''}">${H((CFG[t.id]||{}).label||t.name)}</button>`).join('');
   document.querySelectorAll('#views button').forEach(b=>b.classList.toggle('on',b.dataset.v===S.view));
   $('#addBtn').hidden=!C().addable;}
 function filterBar(){const opts=C().filters.filter(has).map(n=>{let c=choices(n);if(!c)c=[...new Set((S.recs[S.tab]||[]).map(r=>val(r,n)).flat().filter(x=>x!=null&&x!==''))].sort();
@@ -70,9 +79,23 @@ function filterBar(){const opts=C().filters.filter(has).map(n=>{let c=choices(n)
 function cardHTML(r){const c=C();return `<div class="cardi" draggable="true" data-id="${r.id}"><b>${H(name(r))}</b>
  <div class="m">${c.card.filter(has).map(n=>H(show(val(r,n)))).filter(Boolean).join(' · ')}</div>
  ${c.score&&has(c.score)?`<span class="pill r">${H(c.score)} ${H(show(val(r,c.score)))}</span>`:''}${has('Next follow-up')&&val(r,'Next follow-up')?`<span class="pill">Follow-up ${H(val(r,'Next follow-up'))}</span>`:''}</div>`}
-function render(){nav();err(null);const m=$('#main');const L=filtered();
+function modeBar(){return `<div class="modebar seg2"><button data-mode="combined" class="${S.mode==='combined'?'on':''}">Combined</button><button data-mode="single" class="${S.mode!=='combined'?'on':''}">Single table</button></div>`}
+function unionStatuses(tabs){const seen=[];tabs.forEach(t=>inTab(t,()=>(choices('Status')||[]).forEach(c=>{if(!seen.includes(c))seen.push(c)})));
+  const rk=c=>{const i=STATUS_ORDER.indexOf(c);return i<0?STATUS_ORDER.length+seen.indexOf(c):i};return seen.sort((a,b)=>rk(a)-rk(b));}
+function renderLanes(m){const tabs=laneTabs();status(tabs.map(t=>LANES[t]+' '+(S.recs[t]||[]).length).join(' · ')+' records');const st=unionStatuses(tabs);const noStat=tabs.some(t=>inTab(t,()=>filtered().some(r=>!val(r,'Status'))));const groups=noStat?[...st,'']:st;
+  const lanes=tabs.map(t=>inTab(t,()=>{const L=filtered(),own=choices('Status')||[];const coll=!!S.collapsed[t];
+    const cells=groups.map(s=>{const items=L.filter(r=>(val(r,'Status')||'')===s);const na=s&&!own.includes(s);
+      return `<div class="col cell${na?' na':''}" data-s="${H(s)}" data-t="${t}" title="${na?H(s)+' is not a status in this table':''}">${coll?`<div class="small">${items.length||''}</div>`:items.slice(0,200).map(cardHTML).join('')+(items.length>200?`<div class="small">+${items.length-200} more</div>`:'')}</div>`}).join('');
+    return `<div class="lane${coll?' coll':''}" data-lane="${t}"><div class="laneh" data-tog="${t}"><span class="car">${coll?'▸':'▾'}</span> ${H(LANES[t])} <span class="cnt">${L.length}</span></div><div class="lrow">${cells}</div></div>`}));
+  m.innerHTML=modeBar()+`<div class="filters"><input id="q" placeholder="Search both tables…" value="${H(S.q)}"></div>`+
+   `<div class="lanes" style="--n:${groups.length}"><div class="lrow lhead">${groups.map(s=>`<h3>${H(s||'No status')}<span>${tabs.reduce((n,t)=>n+inTab(t,()=>filtered().filter(r=>(val(r,'Status')||'')===s).length),0)}</span></h3>`).join('')}</div>${lanes.join('')}</div>`;
+  document.querySelectorAll('[data-tog]').forEach(h=>h.onclick=()=>{const t=h.dataset.tog;S.collapsed[t]=!S.collapsed[t];localStorage.setItem(LS.col,JSON.stringify(S.collapsed));render()});
+  dnd();}
+function render(){nav();err(null);const m=$('#main');
+  if(combined()){renderLanes(m);wire();return}
+  const L=filtered();
   if(S.view==='kanban'){const st=choices('Status')||[];const groups=[...st,''];
-    m.innerHTML=filterBar()+`<div class="board">${groups.map(s=>{const items=L.filter(r=>(val(r,'Status')||'')===s);if(s===''&&!items.length)return'';
+    m.innerHTML=modeBar()+filterBar()+`<div class="board">${groups.map(s=>{const items=L.filter(r=>(val(r,'Status')||'')===s);if(s===''&&!items.length)return'';
       return `<div class="col" data-s="${H(s)}"><h3>${H(s||'No status')}<span>${items.length}</span></h3>${items.slice(0,200).map(cardHTML).join('')}${items.length>200?`<div class="small">+${items.length-200} more (use List)</div>`:''}</div>`}).join('')}</div>`;
     dnd();}
   else if(S.view==='list'){const cols=C().cols.filter(has);
@@ -92,8 +115,12 @@ function wire(){document.querySelectorAll('[data-id]').forEach(e=>e.onclick=()=>
 function dnd(){document.querySelectorAll('.cardi').forEach(c=>c.ondragstart=e=>{e.dataTransfer.setData('text/plain',c.dataset.id)});
   document.querySelectorAll('.col').forEach(col=>{col.ondragover=e=>{e.preventDefault();col.classList.add('over')};col.ondragleave=()=>col.classList.remove('over');
     col.ondrop=async e=>{e.preventDefault();col.classList.remove('over');const id=e.dataTransfer.getData('text/plain'),s=col.dataset.s;if(!s)return;
-      const r=S.recs[S.tab].find(x=>x.id===id);if(!r||val(r,'Status')===s)return;const old=val(r,'Status');r.fields.Status=s;render();
-      try{await patch(id,{Status:s});toast('Moved to '+s)}catch(x){r.fields.Status=old;render();err(x)}};});}
+      const tid=tabOf(id);if(!tid)return;const r=S.recs[tid].find(x=>x.id===id);if(!r||val(r,'Status')===s)return;
+      const own=inTab(tid,()=>choices('Status')||[]);const tn=LANES[tid]||(CFG[tid]||{}).label||tid;
+      if(!own.includes(s)){toast('“'+s+'” is not a status in '+tn+' – move rejected');return}
+      if(col.dataset.t&&col.dataset.t!==tid){toast('Lane is set by the source table – cannot move a '+tn+' card to '+(LANES[col.dataset.t]||col.dataset.t));return}
+      const old=val(r,'Status');r.fields.Status=s;render();
+      try{await patch(id,{Status:s},tid);toast('Moved to '+s)}catch(x){r.fields.Status=old;render();err(x)}};});}
 // ---------- drawer ----------
 function input(n,v){const f=F(n);if(!f)return'';const t=f.type,id='e_'+f.id;let h;
   if(t==='singleSelect'){const cs=choices(n)||[];if(v&&!cs.includes(v))cs.push(v);h=`<select id="${id}"><option value="">—</option>${cs.map(c=>`<option ${c===v?'selected':''}>${H(c)}</option>`).join('')}</select>`;}
@@ -110,7 +137,7 @@ function readInput(n){const f=F(n),id='e_'+f.id,t=f.type;
   const e=document.getElementById(id);if(!e)return undefined;if(t==='checkbox')return e.checked;
   if(['number','percent','currency'].includes(t))return e.value===''?null:+e.value;return e.value===''?null:e.value;}
 const editable=n=>{const f=F(n);return f&&!['formula','rollup','lookup','createdTime','lastModifiedTime','autoNumber','button','count'].includes(f.type)};
-function openRec(id){const r=S.recs[S.tab].find(x=>x.id===id);if(!r)return;S.open=id;const c=C();
+function openRec(id){const tt=tabOf(id);if(tt&&tt!==S.tab){S.tab=tt;nav()}const r=S.recs[S.tab].find(x=>x.id===id);if(!r)return;S.open=id;const c=C();
   $('#dTitle').textContent=name(r);const tel=has('Phone')&&val(r,'Phone'),web=has('Website')&&val(r,'Website'),maps=has('Google Maps')&&val(r,'Google Maps');
   const canLog=has('Last contact')&&has('Notes');
   $('#dBody').innerHTML=`<div class="qa">${tel?`<a href="tel:${H(String(tel).replace(/[^+\d]/g,''))}">📞 Call ${H(tel)}</a>`:''}${web?`<a href="${H(web)}" target="_blank" rel="noopener">🌐 Website</a>`:''}${maps?`<a href="${H(maps)}" target="_blank" rel="noopener">📍 Maps</a>`:''}
@@ -146,16 +173,18 @@ function addForm(){const t=T();S.open=null;$('#dTitle').textContent='New '+((CFG
 // ---------- settings & boot ----------
 function settings(open){$('#settings').hidden=!open;if(open){$('#tok').value=S.tok;$('#base').value=S.base}}
 async function boot(){if(MOCK&&!S.tok)S.tok='mock';if(!S.tok){settings(true);return}
-  try{status('Loading schema…');await loadSchema();await loadRecords(S.tab);render();if(QP.get('open'))openRec(QP.get('open'))}catch(e){err(e);status('');if(/401|403/.test(e.message))settings(true)}}
+  try{status('Loading schema…');await loadSchema();await loadRecords(S.tab);if(combined())for(const t of laneTabs())await loadRecords(t);render();if(QP.get('open'))openRec(QP.get('open'))}catch(e){err(e);status('');if(/401|403/.test(e.message))settings(true)}}
 $('#saveTok').onclick=()=>{const t=$('#tok').value.trim(),b=$('#base').value.trim();if(!t){alert('Paste a token first.');return}
   S.tok=t;S.base=b;localStorage.setItem(LS.tok,t);localStorage.setItem(LS.base,b);S.recs={};settings(false);boot()};
 $('#forget').onclick=()=>{localStorage.removeItem(LS.tok);S.tok='';S.recs={};S.schema=null;$('#main').innerHTML='';$('#tok').value='';toast('Token removed from this browser')};
 $('#closeSet').onclick=()=>settings(false);$('#settingsBtn').onclick=()=>settings(true);
-$('#tables').onclick=async e=>{const b=e.target.closest('button');if(!b)return;S.tab=b.dataset.t;localStorage.setItem(LS.tab,S.tab);S.flt={};S.q='';S.sort=null;
+$('#tables').onclick=async e=>{const b=e.target.closest('button');if(!b)return;S.tab=b.dataset.t;localStorage.setItem(LS.tab,S.tab);S.flt={};S.q='';S.sort=null;if(S.view==='kanban'&&S.mode==='combined'){S.mode='single';localStorage.setItem(LS.mode,S.mode)}
   try{nav();await loadRecords(S.tab);render()}catch(x){err(x)}};
-$('#views').onclick=e=>{const b=e.target.closest('button');if(!b)return;S.view=b.dataset.v;localStorage.setItem(LS.view,S.view);if(S.schema)render()};
-$('#refresh').onclick=async()=>{try{await loadRecords(S.tab,true);render()}catch(e){err(e)}};
+async function ensureLanes(){if(combined())for(const t of laneTabs())await loadRecords(t);}
+$('#views').onclick=async e=>{const b=e.target.closest('button');if(!b)return;S.view=b.dataset.v;localStorage.setItem(LS.view,S.view);if(S.schema){try{await ensureLanes();render()}catch(x){err(x)}}};
+$('#main').addEventListener('click',async e=>{const b=e.target.closest('[data-mode]');if(!b)return;S.mode=b.dataset.mode;localStorage.setItem(LS.mode,S.mode);S.flt={};try{await ensureLanes();render()}catch(x){err(x)}});
+$('#refresh').onclick=async()=>{try{if(combined())for(const t of laneTabs())await loadRecords(t,true);else await loadRecords(S.tab,true);render()}catch(e){err(e)}};
 $('#addBtn').onclick=addForm;$('#dClose').onclick=closeDrawer;$('#scrim').onclick=closeDrawer;
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeDrawer()});
-window.__crm={S,patch,logCall,render,openRec};boot();
+window.__crm={S,LANES,unionStatuses,patch,logCall,render,openRec};boot();
 })();
