@@ -1,11 +1,11 @@
-const KEY='drumreach-lean-canvas-v1',E='evidence',A='assumption';
-const DEFAULT={title:'DrumReach AI – local AI consulting for Cork & Kerry',boxes:{
+const KEY='drumreach-lean-canvas-v2',E='evidence',A='assumption';
+const DEFAULT={title:'Process Power – operational AI that gives your team time back',boxes:{
 problem:[['Skilled staff retype and reconcile data across ERP, Excel and Microsoft',A],['Quotes, tenders, spec sheets, compliance paperwork and month-end reports are manual',A],['Decisions run on days-old numbers',A],['Hypothesis to validate in first calls: “How many hours a week does your team spend moving data between systems?”',A]],
 alternatives:[['Microsoft partners and ERP resellers (e.g. ProStrategy)',E],['Dublin AI consultancies',E],['Big Four',E],['Hiring a data person',E],['Doing nothing in Excel',E]],
 solution:[['AI readiness assessment plus roadmap',E],['Rapid prototypes in about 6 weeks',E],['Forward-deployed engineer on retainer',E],['Pilots in data analysis, market research, data harvesting and Power Apps',E]],
 metrics:[['Discovery calls booked',E],['Assessments sold',E],['Pilot-to-retainer conversion',E],['Monthly recurring revenue',E],['Hours saved per client',E]],
 uvp:[['We help growing Cork and Kerry firms turn the data and paperwork already sitting in their Microsoft and ERP systems into working AI tools in weeks, so their teams spend less time on admin and make faster decisions without hiring.',E]],
-concept:[['Your own AI engineer, on call, for less than the cost of a hire.',E]],
+concept:[['Process Power: operational AI that gives your team time back',E],['Your own AI engineer, on call, for less than the cost of a hire.',E]],
 advantage:[['Local and in person in Cork and Kerry',E],['Builds working tools in weeks rather than selling licences',E],['Agent-run delivery engine that keeps costs low (partly an assumption)',A]],
 channels:[['Personalised branded landing pages per prospect (7 built)',E],['Direct outreach to named decision-makers',E],['Email to limited companies with an opt-out (marketing calls to mobiles need consent under Irish ePrivacy rules)',E],['LinkedIn',E],['Local referrals (e.g. CSG)',E],['Cork Chamber',E]],
 segments:[['Cork and Kerry manufacturers, distributors and engineering firms, roughly 50–1,000 staff',E],['On Microsoft 365, Power BI or SAP/IFS ERP',E],['Budget for a €3–5k/month retainer',E]],
@@ -34,7 +34,7 @@ function md(){let o=`# ${S.title}\n\n_Lean Canvas. Tags: [evidence] / [assumptio
 document.getElementById('exJson').onclick=()=>dl('lean-canvas.json',JSON.stringify(S,null,2),'application/json');
 document.getElementById('exMd').onclick=()=>dl('lean-canvas.md',md(),'text/markdown');
 document.getElementById('print').onclick=()=>window.print();
-document.getElementById('reset').onclick=()=>{if(confirm('Reset the canvas to the default DrumReach content? Your edits will be lost.')){S=clone(DEFAULT);localStorage.removeItem(KEY);render()}};
+document.getElementById('reset').onclick=()=>{if(confirm('Reset the canvas to the default Process Power content? Your edits will be lost.')){S=clone(DEFAULT);localStorage.removeItem(KEY);render()}};
 const SRC='https://www.cso.ie/en/releasesandpublications/ep/p-biiilb/businessinireland2024-insightsonthelifecycleofbusinesses/keyfindings/';
 const FOOT_MD=`Market note (estimate): about 750 Irish firms with 50+ staff in Cork and Kerry, estimated from the CSO 2024 national count (4,835 medium plus 958 large) × about 13% (Cork ~10%, Kerry ~3%). Source: ${SRC}\n`;
 document.getElementById('foot').innerHTML=`<b>Market note</b> <span class="tag assumption">estimate</span> — about <b>750</b> Irish firms with 50+ staff in Cork and Kerry, estimated from the CSO 2024 national count (4,835 medium plus 958 large) × about 13% (Cork ~10%, Kerry ~3%). Source: <a href="${SRC}" target="_blank" rel="noopener">CSO, Business in Ireland 2024 – key findings</a>.`;
