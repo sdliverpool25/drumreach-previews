@@ -25,3 +25,5 @@ footer{margin-top:14px;color:var(--mut);font-size:12px;line-height:1.5;backgroun
 @media (min-width:560px) and (max-width:900px){.grid{grid-template-areas:"p s" "u u" "m a" "h c" "x r"}}
 @media print{.top,.legend,.del,.add{display:none!important}body{background:#fff;font-size:10px}.box{min-height:0;break-inside:avoid}main{padding:0}
 .grid{grid-template-columns:repeat(10,1fr)!important;grid-template-areas:"p p s s u u a a c c" "p p m m u u h h c c" "x x x x x r r r r r"!important}@page{size:A4 landscape;margin:8mm}}
+/* Newsletter (AIworkshere.ie) items: marked so they are easy to tell apart from the original canvas content */
+li.nl{background:#fff8e1;border-left:3px solid #f2c94c;padding-left:5px;border-radius:3px;margin-top:2px}

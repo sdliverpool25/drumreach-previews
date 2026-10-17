@@ -1,5 +1,5 @@
 const KEY='drumreach-lean-canvas-v2',E='evidence',A='assumption';
-const DEFAULT={title:'Process Power – operational AI that gives your team time back',boxes:{
+const DEFAULT={nlMerged:1,title:'Process Power – operational AI that gives your team time back',boxes:{
 problem:[['Skilled staff retype and reconcile data across ERP, Excel and Microsoft',A],['Quotes, tenders, spec sheets, compliance paperwork and month-end reports are manual',A],['Decisions run on days-old numbers',A],['Hypothesis to validate in first calls: “How many hours a week does your team spend moving data between systems?”',A]],
 alternatives:[['Microsoft partners and ERP resellers (e.g. ProStrategy)',E],['Dublin AI consultancies',E],['Big Four',E],['Hiring a data person',E],['Doing nothing in Excel',E]],
 solution:[['AI readiness assessment plus roadmap',E],['Rapid prototypes in about 6 weeks',E],['Forward-deployed engineer on retainer',E],['Pilots in data analysis, market research, data harvesting and Power Apps',E]],
@@ -12,13 +12,21 @@ segments:[['Cork and Kerry manufacturers, distributors and engineering firms, ro
 adopters:[['MIG Fermoy',E],['EPS Group Mallow',E],['Tricel Killarney (hiring a Data Manager)',E],['Barry Group Mallow',E],['Cygnum Macroom',E]],
 costs:[['Founder time — TBD',A],['AI/API and tooling costs — TBD',A],['Microsoft and Power Platform dev licences — TBD',A],['Hosting — TBD',A],['Outreach tools — TBD',A],['Insurance — TBD',A]],
 revenue:[['€3–5k/month retainer',E],['Paid readiness assessment or pilot as the entry point (price TBD)',A],['10–20 clients ≈ €360k–€1.2m a year',E]]}};
+// Newsletter (AIworkshere.ie) additions: clearly marked with the NL prefix; appended to defaults AND merged into
+// any canvas already saved in this browser, so no existing content is removed. See ../newsletter/.
+const NL='📰 Newsletter (AIworkshere.ie): ';
+const NEWSLETTER={uvp:[[NL+'USP – one practical AI idea a week that works here: on the Microsoft 365 and ERP systems Cork, Kerry and Limerick firms already own, written by a local builder, with a “time-back test” in every issue',A]],
+segments:[[NL+'primary readers – operations/finance/managing directors and IT managers at 50–1,000-staff Munster firms on M365 + SAP/IFS',A],[NL+'secondary – SME owners and professional services (esp. Kerry), plus amplifiers: LEO advisers, chambers, ENTIRE EDIH, RDI Hub',A]],
+channels:[[NL+'weekly email (8 issues, 3 Nov – 22 Dec 2026) as the authority/top-of-funnel channel into Process Power',A],[NL+'growth via LinkedIn, local AI events (Cork meetup, CEIA, chambers), LEO, partner cross-promos and the AI readiness lead magnet; target 250 subscribers by 31 Dec',A]]};
+for(const k in NEWSLETTER)DEFAULT.boxes[k].push(...NEWSLETTER[k]);
 const LAYOUT=[['p','problem','Problem',1,'alternatives','Existing alternatives'],['s','solution','Solution',4],['m','metrics','Key Metrics',8],['u','uvp','Unique Value Proposition',3,'concept','High-level concept'],['a','advantage','Unfair Advantage',9],['h','channels','Channels',5],['c','segments','Customer Segments',2,'adopters','Early adopters'],['x','costs','Cost Structure',7],['r','revenue','Revenue Streams',6]];
 const NAMES={};LAYOUT.forEach(l=>{NAMES[l[1]]=l[2];if(l[4])NAMES[l[4]]=l[5]});
 const clone=o=>JSON.parse(JSON.stringify(o));
 let S;try{S=JSON.parse(localStorage.getItem(KEY))}catch(e){}if(!S||!S.boxes)S=clone(DEFAULT);
+if(!S.nlMerged){for(const k in NEWSLETTER){const b=S.boxes[k]||(S.boxes[k]=[]);NEWSLETTER[k].forEach(it=>{if(!b.some(x=>x[0]===it[0]))b.push(clone(it))})}S.nlMerged=1}
 const save=()=>{localStorage.setItem(KEY,JSON.stringify(S));const s=document.getElementById('saved');s.textContent='Saved ✓';clearTimeout(save.t);save.t=setTimeout(()=>s.textContent='',1200)};
 function list(k){const ul=document.createElement('ul');(S.boxes[k]||(S.boxes[k]=[])).forEach((it,i)=>{const li=document.createElement('li');
-const t=document.createElement('div');t.className='t';t.contentEditable='true';t.textContent=it[0];t.oninput=()=>{it[0]=t.textContent;save()};
+if(it[0].startsWith(NL))li.className='nl';const t=document.createElement('div');t.className='t';t.contentEditable='true';t.textContent=it[0];t.oninput=()=>{it[0]=t.textContent;save()};
 const g=document.createElement('button');g.className='tag '+it[1];g.textContent=it[1];g.title='Toggle evidence / assumption';g.onclick=()=>{it[1]=it[1]===E?A:E;save();render()};
 const d=document.createElement('button');d.className='del';d.textContent='×';d.title='Remove';d.onclick=()=>{S.boxes[k].splice(i,1);save();render()};
 li.append(t,g,d);ul.append(li)});const add=document.createElement('button');add.className='add';add.textContent='+ Add item';

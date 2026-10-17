@@ -1,4 +1,4 @@
-/* Shared top navigation for the Process Power pages (canvas/, roadmap/) */
+/* Shared top navigation for the Process Power pages (canvas/, roadmap/, newsletter/) */
 .sitenav{display:flex;gap:4px;margin-left:8px}
 .sitenav a{color:#ddd;text-decoration:none;font-weight:600;font-size:13px;padding:6px 10px;border-radius:6px;border:1px solid transparent}
 .sitenav a:hover{border-color:#555;color:#fff}
