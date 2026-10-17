@@ -1,0 +1,377 @@
+{
+ "generatedAt": "2026-10-17T05:58:42Z",
+ "source": "Linear team SHA",
+ "phases": [
+  {
+   "key": "now",
+   "label": "Now",
+   "phase": "Phase 1",
+   "start": "2026-10-19",
+   "end": "2026-11-08"
+  },
+  {
+   "key": "next",
+   "label": "Next",
+   "phase": "Phase 2",
+   "start": "2026-11-09",
+   "end": "2026-12-06"
+  },
+  {
+   "key": "later",
+   "label": "Later",
+   "phase": "Phase 3",
+   "start": "2026-12-07",
+   "end": "2026-12-31"
+  }
+ ],
+ "streams": [
+  {
+   "id": "P-SHA-7",
+   "name": "Stream: Cashflow",
+   "short": "Cashflow",
+   "url": "https://linear.app/shanedrumm/project/stream-cashflow-be27fd7b054b",
+   "color": "#bec2c8",
+   "objective": "Get Process Power earning.",
+   "startDate": "2026-10-19",
+   "targetDate": "2026-12-31",
+   "keyResults": [
+    {
+     "id": "f91adcaa-b346-41fc-8564-1ce22cd191ee",
+     "name": "KR1: 5 fixed-price pilot use cases",
+     "description": "Define 5 pilot use cases, each with a fixed price. Phase 1.",
+     "targetDate": "2026-11-08",
+     "bucket": "now",
+     "startsPhase1": false,
+     "progress": 0,
+     "issues": [
+      {
+       "id": "SHA-25",
+       "title": "Define 5 fixed-price pilot use cases",
+       "url": "https://linear.app/shanedrumm/issue/SHA-25/define-5-fixed-price-pilot-use-cases",
+       "status": "Backlog",
+       "statusType": "backlog"
+      }
+     ]
+    },
+    {
+     "id": "8ec63c3f-6717-4453-9d88-049e578cec5c",
+     "name": "KR2: 40 qualified prospects contacted",
+     "description": "Contact 40 qualified prospects in Millstreet, Rathmore, Cork and Kerry. Phase 2.",
+     "targetDate": "2026-12-06",
+     "bucket": "next",
+     "startsPhase1": false,
+     "progress": 0,
+     "issues": [
+      {
+       "id": "SHA-26",
+       "title": "Contact 40 qualified prospects in Millstreet, Rathmore, Cork and Kerry",
+       "url": "https://linear.app/shanedrumm/issue/SHA-26/contact-40-qualified-prospects-in-millstreet-rathmore-cork-and-kerry",
+       "status": "Backlog",
+       "statusType": "backlog"
+      }
+     ]
+    },
+    {
+     "id": "48b6a72a-4a74-4e50-a26d-ef0883a884d8",
+     "name": "KR3: 3 events attended",
+     "description": "Attend 3 events. Phase 2. Related: [SHA-22](https://linear.app/shanedrumm/issue/SHA-22/research-ai-meetups-events-groups-and-forums-in-cork-kerry-and).",
+     "targetDate": "2026-12-06",
+     "bucket": "next",
+     "startsPhase1": false,
+     "progress": 0,
+     "issues": [
+      {
+       "id": "SHA-27",
+       "title": "Attend 3 networking events",
+       "url": "https://linear.app/shanedrumm/issue/SHA-27/attend-3-networking-events",
+       "status": "Backlog",
+       "statusType": "backlog"
+      }
+     ]
+    },
+    {
+     "id": "72ddcf22-3345-4d3e-8265-fddec24fee81",
+     "name": "KR4: 2 paid pilots signed",
+     "description": "Sign 2 paid pilots by 31 Dec. Phase 3.",
+     "targetDate": "2026-12-31",
+     "bucket": "later",
+     "startsPhase1": false,
+     "progress": 0,
+     "issues": [
+      {
+       "id": "SHA-28",
+       "title": "Sign 2 paid pilots",
+       "url": "https://linear.app/shanedrumm/issue/SHA-28/sign-2-paid-pilots",
+       "status": "Backlog",
+       "statusType": "backlog"
+      }
+     ]
+    }
+   ],
+   "unassigned": []
+  },
+  {
+   "id": "P-SHA-8",
+   "name": "Stream: System",
+   "short": "System",
+   "url": "https://linear.app/shanedrumm/project/stream-system-b325930b9280",
+   "color": "#95a2b3",
+   "objective": "Have the toolkit and offer ready to sell.",
+   "startDate": "2026-10-19",
+   "targetDate": "2026-12-31",
+   "keyResults": [
+    {
+     "id": "1310e3e6-f734-4805-86da-2b9b6341c87a",
+     "name": "KR1: Microsoft AI Builder certification",
+     "description": "Get the Microsoft AI Builder certification. Start in Phase 1, finish in Phase 3.",
+     "targetDate": "2026-12-31",
+     "bucket": "later",
+     "startsPhase1": true,
+     "progress": 0,
+     "issues": [
+      {
+       "id": "SHA-29",
+       "title": "Get the Microsoft AI Builder certification",
+       "url": "https://linear.app/shanedrumm/issue/SHA-29/get-the-microsoft-ai-builder-certification",
+       "status": "Backlog",
+       "statusType": "backlog"
+      }
+     ]
+    },
+    {
+     "id": "c06a5c21-7b8b-4b6c-a561-8327129935eb",
+     "name": "KR2: Business runs on OpenAI work OS",
+     "description": "Run the business on a work OS built on OpenAI. Phase 3.",
+     "targetDate": "2026-12-31",
+     "bucket": "later",
+     "startsPhase1": false,
+     "progress": 0,
+     "issues": [
+      {
+       "id": "SHA-30",
+       "title": "Run the business on an OpenAI-based work OS",
+       "url": "https://linear.app/shanedrumm/issue/SHA-30/run-the-business-on-an-openai-based-work-os",
+       "status": "Backlog",
+       "statusType": "backlog"
+      }
+     ]
+    },
+    {
+     "id": "167aad7f-1fc9-4302-9e9e-50e8c55657cf",
+     "name": "KR3: AI readiness lead magnet, 25 sign-ups",
+     "description": "Launch the AI readiness lead magnet and get 25 sign-ups. Phase 2.",
+     "targetDate": "2026-12-06",
+     "bucket": "next",
+     "startsPhase1": false,
+     "progress": 0,
+     "issues": [
+      {
+       "id": "SHA-31",
+       "title": "Launch the AI readiness lead magnet",
+       "url": "https://linear.app/shanedrumm/issue/SHA-31/launch-the-ai-readiness-lead-magnet",
+       "status": "Backlog",
+       "statusType": "backlog"
+      }
+     ]
+    },
+    {
+     "id": "7ae1651d-0b03-4436-97eb-ca64fdf26fba",
+     "name": "KR4: Pitch deck finished",
+     "description": "Finish the pitch deck. Phase 1. Related: [SHA-11](https://linear.app/shanedrumm/issue/SHA-11/agentic-ai-slidedeck).",
+     "targetDate": "2026-11-08",
+     "bucket": "now",
+     "startsPhase1": false,
+     "progress": 0,
+     "issues": [
+      {
+       "id": "SHA-32",
+       "title": "Finish the pitch deck",
+       "url": "https://linear.app/shanedrumm/issue/SHA-32/finish-the-pitch-deck",
+       "status": "Backlog",
+       "statusType": "backlog"
+      }
+     ]
+    },
+    {
+     "id": "35a0784b-4955-4e33-af17-f7a89c77379e",
+     "name": "KR5: One-page safe AI guide published",
+     "description": "Publish a one-page guide to using AI safely. Phase 2.",
+     "targetDate": "2026-12-06",
+     "bucket": "next",
+     "startsPhase1": false,
+     "progress": 0,
+     "issues": [
+      {
+       "id": "SHA-33",
+       "title": "Publish a one-page guide to using AI safely",
+       "url": "https://linear.app/shanedrumm/issue/SHA-33/publish-a-one-page-guide-to-using-ai-safely",
+       "status": "Backlog",
+       "statusType": "backlog"
+      }
+     ]
+    }
+   ],
+   "unassigned": [
+    {
+     "id": "SHA-41",
+     "title": "Build a 2026 roadmap web app on GitHub",
+     "url": "https://linear.app/shanedrumm/issue/SHA-41/build-a-2026-roadmap-web-app-on-github",
+     "status": "Todo",
+     "statusType": "unstarted"
+    }
+   ]
+  },
+  {
+   "id": "P-SHA-9",
+   "name": "Stream: Authority",
+   "short": "Authority",
+   "url": "https://linear.app/shanedrumm/project/stream-authority-d0a25f8886ff",
+   "color": "#f2c94c",
+   "objective": "Be the go-to local voice on AI.",
+   "startDate": "2026-10-19",
+   "targetDate": "2026-12-31",
+   "keyResults": [
+    {
+     "id": "18a3d7d1-b3bd-4fd2-95fd-8b8a0117bcf7",
+     "name": "KR1: 8 askaboutai.ie newsletter issues",
+     "description": "Send 8 issues of the [askaboutai.ie](<http://askaboutai.ie>) newsletter. First issue in Phase 1 (by 8 Nov).",
+     "targetDate": "2026-11-08",
+     "bucket": "now",
+     "startsPhase1": false,
+     "progress": 0,
+     "issues": [
+      {
+       "id": "SHA-34",
+       "title": "Send 8 issues of the askaboutai.ie newsletter",
+       "url": "https://linear.app/shanedrumm/issue/SHA-34/send-8-issues-of-the-askaboutaiie-newsletter",
+       "status": "Backlog",
+       "statusType": "backlog"
+      }
+     ]
+    },
+    {
+     "id": "b36a343f-6f65-4173-b0ef-ed6202fa743b",
+     "name": "KR2: 8 weekly digital-clone videos",
+     "description": "Post 8 weekly videos using Shane's digital clone. Phase 2.",
+     "targetDate": "2026-12-06",
+     "bucket": "next",
+     "startsPhase1": false,
+     "progress": 0,
+     "issues": [
+      {
+       "id": "SHA-35",
+       "title": "Post 8 weekly videos with the digital clone",
+       "url": "https://linear.app/shanedrumm/issue/SHA-35/post-8-weekly-videos-with-the-digital-clone",
+       "status": "Backlog",
+       "statusType": "backlog"
+      }
+     ]
+    },
+    {
+     "id": "220b7671-57c2-415f-b964-fa780e2eff69",
+     "name": "KR3: 1 speaking slot booked",
+     "description": "Book one speaking slot at an event. Phase 3.",
+     "targetDate": "2026-12-31",
+     "bucket": "later",
+     "startsPhase1": false,
+     "progress": 0,
+     "issues": [
+      {
+       "id": "SHA-36",
+       "title": "Book a speaking slot at an event",
+       "url": "https://linear.app/shanedrumm/issue/SHA-36/book-a-speaking-slot-at-an-event",
+       "status": "Backlog",
+       "statusType": "backlog"
+      }
+     ]
+    },
+    {
+     "id": "aceefcdd-36b8-4942-ae6a-fc30d0b03efb",
+     "name": "KR4: Forum yes/no decision",
+     "description": "Decide yes or no on running a forum. Phase 3.",
+     "targetDate": "2026-12-31",
+     "bucket": "later",
+     "startsPhase1": false,
+     "progress": 0,
+     "issues": [
+      {
+       "id": "SHA-37",
+       "title": "Decide whether to run a forum",
+       "url": "https://linear.app/shanedrumm/issue/SHA-37/decide-whether-to-run-a-forum",
+       "status": "Backlog",
+       "statusType": "backlog"
+      }
+     ]
+    }
+   ],
+   "unassigned": []
+  },
+  {
+   "id": "P-SHA-10",
+   "name": "Stream: Team",
+   "short": "Team",
+   "url": "https://linear.app/shanedrumm/project/stream-team-07e369bc9d72",
+   "color": "#26b5ce",
+   "objective": "Set up how the business will grow.",
+   "startDate": "2026-10-19",
+   "targetDate": "2026-12-31",
+   "keyResults": [
+    {
+     "id": "c30fd2a4-bd18-46d7-8bf7-de72353bacc6",
+     "name": "KR1: James's move into sales settled",
+     "description": "Settle James's role change into sales. Phase 2.",
+     "targetDate": "2026-12-06",
+     "bucket": "next",
+     "startsPhase1": false,
+     "progress": 0,
+     "issues": [
+      {
+       "id": "SHA-38",
+       "title": "Settle James's move into sales",
+       "url": "https://linear.app/shanedrumm/issue/SHA-38/settle-jamess-move-into-sales",
+       "status": "Backlog",
+       "statusType": "backlog"
+      }
+     ]
+    },
+    {
+     "id": "36d8427d-0dd1-460d-8c3c-93d9a405cc70",
+     "name": "KR2: Values, principles and goals written",
+     "description": "Write down values, principles and goals. Phase 1.",
+     "targetDate": "2026-11-08",
+     "bucket": "now",
+     "startsPhase1": false,
+     "progress": 0,
+     "issues": [
+      {
+       "id": "SHA-39",
+       "title": "Write down values, principles and goals",
+       "url": "https://linear.app/shanedrumm/issue/SHA-39/write-down-values-principles-and-goals",
+       "status": "Backlog",
+       "statusType": "backlog"
+      }
+     ]
+    },
+    {
+     "id": "deeceb09-6151-4e18-9418-dafc61191ac8",
+     "name": "KR3: Power Platform and full-stack people named",
+     "description": "Name the people for Power Platform and full stack, or line them up as contractors. Phase 3.",
+     "targetDate": "2026-12-31",
+     "bucket": "later",
+     "startsPhase1": false,
+     "progress": 0,
+     "issues": [
+      {
+       "id": "SHA-40",
+       "title": "Name the Power Platform and full-stack people",
+       "url": "https://linear.app/shanedrumm/issue/SHA-40/name-the-power-platform-and-full-stack-people",
+       "status": "Backlog",
+       "statusType": "backlog"
+      }
+     ]
+    }
+   ],
+   "unassigned": []
+  }
+ ]
+}

@@ -1,0 +1,36 @@
+name: Refresh roadmap data from Linear
+# Rebuilds roadmap/data.json from Linear every morning and on demand.
+# Needs a repo secret LINEAR_API_KEY (Settings > Secrets and variables > Actions).
+# The key only lives in GitHub Actions; it is never committed or sent to the browser.
+on:
+  schedule:
+    - cron: "15 6 * * *"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Skip if no Linear key is configured
+        id: chk
+        env:
+          LINEAR_API_KEY: ${{ secrets.LINEAR_API_KEY }}
+        run: |
+          if [ -z "$LINEAR_API_KEY" ]; then echo "LINEAR_API_KEY secret not set; skipping."; echo "go=false" >> "$GITHUB_OUTPUT"; else echo "go=true" >> "$GITHUB_OUTPUT"; fi
+      - name: Build data.json
+        if: steps.chk.outputs.go == 'true'
+        env:
+          LINEAR_API_KEY: ${{ secrets.LINEAR_API_KEY }}
+        run: python3 scripts/build_roadmap_data.py --fetch
+      - name: Commit if changed
+        if: steps.chk.outputs.go == 'true'
+        run: |
+          # ignore the generatedAt timestamp when deciding whether anything changed
+          if git diff --quiet -I'"generatedAt"' -- roadmap/data.json; then echo "No changes"; exit 0; fi
+          git config user.name "roadmap-bot"
+          git config user.email "roadmap-bot@users.noreply.github.com"
+          git add roadmap/data.json
+          git commit -m "Refresh roadmap data from Linear"
+          git push
