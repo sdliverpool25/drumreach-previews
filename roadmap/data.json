@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-17T05:58:42Z",
+ "generatedAt": "2026-10-17T09:11:39Z",
  "source": "Linear team SHA",
  "phases": [
   {
@@ -238,7 +238,7 @@
      "targetDate": "2026-11-08",
      "bucket": "now",
      "startsPhase1": false,
-     "progress": 0,
+     "progress": 13,
      "issues": [
       {
        "id": "SHA-34",
@@ -246,6 +246,13 @@
        "url": "https://linear.app/shanedrumm/issue/SHA-34/send-8-issues-of-the-askaboutaiie-newsletter",
        "status": "Backlog",
        "statusType": "backlog"
+      },
+      {
+       "id": "SHA-42",
+       "title": "Launch AIworkshere.ie newsletter: strategy, calendar & growth plan",
+       "url": "https://linear.app/shanedrumm/issue/SHA-42/launch-aiworkshereie-newsletter-strategy-calendar-and-growth-plan",
+       "status": "In Progress",
+       "statusType": "started"
       }
      ]
     },
