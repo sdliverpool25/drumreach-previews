@@ -10,16 +10,16 @@ a.ghost{text-decoration:none;display:inline-block}
 .toc{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 10px}.toc a{background:#fff;border:1px solid var(--line);border-radius:99px;padding:4px 10px;text-decoration:none;color:var(--ink);font-size:12px;font-weight:600}.toc a:hover{border-color:var(--red);color:var(--red)}
 .nlgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .box.nl{min-height:0;display:block;line-height:1.5;font-size:13.5px}
-.box.nl.s1{border-top-color:var(--red)}.box.nl.s1,.box.nl.s2,.box.nl.s5,.box.nl.s6,.box.nl.s7,.box.nl.s8,.box.nl.s9{grid-column:1/-1}.box.nl.s5,.box.nl.s7{border-top-color:#f2c94c}
+.box.nl.s1{border-top-color:var(--red)}.box.nl.s1,.box.nl.s2,.box.nl.s3,.box.nl.s4,.box.nl.s5,.box.nl.s7,.box.nl.s8,.box.nl.s9,.box.nl.s10{grid-column:1/-1}.box.nl.s5,.box.nl.s7{border-top-color:#f2c94c}
 .box.nl h3{font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--mut);margin:12px 0 4px}
 .box.nl p{margin:6px 0}.box.nl ul,.box.nl ol{margin:4px 0 8px;padding-left:20px}.box.nl ul{list-style:disc}
 .box.nl li{display:list-item;border:0;padding:2px 0}
-.box.nl.s2,.box.nl.s6{columns:3 300px;column-gap:18px}.box.nl.s2 h2,.box.nl.s6 h2{column-span:all}.box.nl.s6 h3{break-after:avoid}.box.nl.s6 ul{break-inside:avoid}.box.nl.s2 p{break-after:avoid}.box.nl.s2 ul{break-inside:avoid}
-.box.nl.s6 a,.box.nl a{word-break:break-word}
+.box.nl.s3,.box.nl.s8{columns:3 300px;column-gap:18px}.box.nl.s3 h2,.box.nl.s8 h2{column-span:all}.box.nl.s8 h3{break-after:avoid}.box.nl.s8 ul{break-inside:avoid}.box.nl.s3 p,.box.nl.s8 p{break-after:avoid}.box.nl.s3 ul{break-inside:avoid}
+.box.nl.s8 a,.box.nl a{word-break:break-word}
 .tw{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:12.5px;margin:6px 0}
 th{background:var(--ink);color:#fff;text-align:left;padding:6px 8px;font-size:11px;text-transform:uppercase;letter-spacing:.04em}
 td{border-bottom:1px solid var(--line);padding:6px 8px;vertical-align:top}tr:nth-child(even) td{background:#faf9f6}
-.box.nl.s5 td:first-child{font-weight:800;color:var(--red)}.box.nl.s5 td:nth-child(2){white-space:nowrap;font-weight:600}
+.box.nl.s7 td:first-child{font-weight:800;color:var(--red)}.box.nl.s7 td:nth-child(2){white-space:nowrap;font-weight:600}
 code{background:#f0eee9;border-radius:3px;padding:0 4px;font-size:12px}
 blockquote{margin:6px 0;padding:6px 10px;border-left:3px solid #f2c94c;background:#fffbea}
 @media (max-width:900px){.hero,.nlgrid{grid-template-columns:1fr}}
