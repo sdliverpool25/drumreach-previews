@@ -10,7 +10,7 @@ a.ghost{text-decoration:none;display:inline-block}
 .toc{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 10px}.toc a{background:#fff;border:1px solid var(--line);border-radius:99px;padding:4px 10px;text-decoration:none;color:var(--ink);font-size:12px;font-weight:600}.toc a:hover{border-color:var(--red);color:var(--red)}
 .nlgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .box.nl{min-height:0;display:block;line-height:1.5;font-size:13.5px}
-.box.nl.s1{border-top-color:var(--red)}.box.nl.s1,.box.nl.s2,.box.nl.s3,.box.nl.s4,.box.nl.s5,.box.nl.s7,.box.nl.s8,.box.nl.s9,.box.nl.s10,.box.nl.s11,.box.nl.s12,.box.nl.s13,.box.nl.s14{grid-column:1/-1}.box.nl.s13{border-top-color:#f2c94c}.box.nl.s5,.box.nl.s7{border-top-color:#f2c94c}
+.box.nl.s1{border-top-color:var(--red)}.box.nl.s1,.box.nl.s2,.box.nl.s3,.box.nl.s4,.box.nl.s5,.box.nl.s7,.box.nl.s8,.box.nl.s9,.box.nl.s10,.box.nl.s11,.box.nl.s12,.box.nl.s13,.box.nl.s14,.box.nl.s15{grid-column:1/-1}.box.nl.s13{border-top-color:#f2c94c}.box.nl.s14{border-top-color:var(--red)}.box.nl.s5,.box.nl.s7{border-top-color:#f2c94c}
 .box.nl h3{font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--mut);margin:12px 0 4px}
 .box.nl p{margin:6px 0}.box.nl ul,.box.nl ol{margin:4px 0 8px;padding-left:20px}.box.nl ul{list-style:disc}
 .box.nl li{display:list-item;border:0;padding:2px 0}
