@@ -1,7 +1,7 @@
 (function(){
 'use strict';
 const $=s=>document.querySelector(s), H=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const LS={tok:'drumreach_crm_pat',base:'drumreach_crm_base',tab:'drumreach_crm_tab',view:'drumreach_crm_view',mode:'drumreach_crm_pipe_mode',col:'drumreach_crm_lanes_collapsed'};
+const LS={tok:'digital_drumm_crm_pat',base:'digital_drumm_crm_base',tab:'digital_drumm_crm_tab',view:'digital_drumm_crm_view',mode:'digital_drumm_crm_pipe_mode',col:'digital_drumm_crm_lanes_collapsed'};
 // Swim lanes for the combined Pipeline: table id -> lane label. Add a table here to get a new lane.
 const LANES={tblcNUFz6N5PaLG8t:'GBP / SEO',tblc1YbbEsnHZd6l2:'AI Consulting'};
 // Preferred pipeline order for the union of Status choices; unknown statuses go after, in table order.
