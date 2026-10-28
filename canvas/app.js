@@ -1,11 +1,11 @@
-const KEY='drumreach-lean-canvas-v2',E='evidence',A='assumption';
-const DEFAULT={nlMerged:1,title:'Process Power – operational AI that gives your team time back',boxes:{
+const KEY='digital-drumm-lean-canvas-v2',E='evidence',A='assumption';
+const DEFAULT={nlMerged:1,title:'Digital Drumm – operational AI that gives your team time back',boxes:{
 problem:[['Skilled staff retype and reconcile data across ERP, Excel and Microsoft',A],['Quotes, tenders, spec sheets, compliance paperwork and month-end reports are manual',A],['Decisions run on days-old numbers',A],['Hypothesis to validate in first calls: “How many hours a week does your team spend moving data between systems?”',A]],
 alternatives:[['Microsoft partners and ERP resellers (e.g. ProStrategy)',E],['Dublin AI consultancies',E],['Big Four',E],['Hiring a data person',E],['Doing nothing in Excel',E]],
 solution:[['AI readiness assessment plus roadmap',E],['Rapid prototypes in about 6 weeks',E],['Forward-deployed engineer on retainer',E],['Pilots in data analysis, market research, data harvesting and Power Apps',E]],
 metrics:[['Discovery calls booked',E],['Assessments sold',E],['Pilot-to-retainer conversion',E],['Monthly recurring revenue',E],['Hours saved per client',E]],
 uvp:[['We help growing Cork and Kerry firms turn the data and paperwork already sitting in their Microsoft and ERP systems into working AI tools in weeks, so their teams spend less time on admin and make faster decisions without hiring.',E]],
-concept:[['Process Power: operational AI that gives your team time back',E],['Your own AI engineer, on call, for less than the cost of a hire.',E]],
+concept:[['Digital Drumm: operational AI that gives your team time back',E],['Your own AI engineer, on call, for less than the cost of a hire.',E]],
 advantage:[['Local and in person in Cork and Kerry',E],['Builds working tools in weeks rather than selling licences',E],['Agent-run delivery engine that keeps costs low (partly an assumption)',A]],
 channels:[['Personalised branded landing pages per prospect (7 built)',E],['Direct outreach to named decision-makers',E],['Email to limited companies with an opt-out (marketing calls to mobiles need consent under Irish ePrivacy rules)',E],['LinkedIn',E],['Local referrals (e.g. CSG)',E],['Cork Chamber',E]],
 segments:[['Cork and Kerry manufacturers, distributors and engineering firms, roughly 50–1,000 staff',E],['On Microsoft 365, Power BI or SAP/IFS ERP',E],['Budget for a €3–5k/month retainer',E]],
@@ -17,7 +17,7 @@ revenue:[['€3–5k/month retainer',E],['Paid readiness assessment or pilot as 
 const NL='📰 Newsletter (AIworkshere.ie): ';
 const NEWSLETTER={uvp:[[NL+'USP – one practical AI idea a week that works here: on the Microsoft 365 and ERP systems Cork, Kerry and Limerick firms already own, written by a local builder, with a “time-back test” in every issue',A]],
 segments:[[NL+'primary readers – operations/finance/managing directors and IT managers at 50–1,000-staff Munster firms on M365 + SAP/IFS',A],[NL+'secondary – SME owners and professional services (esp. Kerry), plus amplifiers: LEO advisers, chambers, ENTIRE EDIH, RDI Hub',A]],
-channels:[[NL+'weekly email (8 issues, 3 Nov – 22 Dec 2026) as the authority/top-of-funnel channel into Process Power',A],[NL+'growth via LinkedIn, local AI events (Cork meetup, CEIA, chambers), LEO, partner cross-promos and the AI readiness lead magnet; target 250 subscribers by 31 Dec',A]]};
+channels:[[NL+'weekly email (8 issues, 3 Nov – 22 Dec 2026) as the authority/top-of-funnel channel into Digital Drumm',A],[NL+'growth via LinkedIn, local AI events (Cork meetup, CEIA, chambers), LEO, partner cross-promos and the AI readiness lead magnet; target 250 subscribers by 31 Dec',A]]};
 for(const k in NEWSLETTER)DEFAULT.boxes[k].push(...NEWSLETTER[k]);
 const LAYOUT=[['p','problem','Problem',1,'alternatives','Existing alternatives'],['s','solution','Solution',4],['m','metrics','Key Metrics',8],['u','uvp','Unique Value Proposition',3,'concept','High-level concept'],['a','advantage','Unfair Advantage',9],['h','channels','Channels',5],['c','segments','Customer Segments',2,'adopters','Early adopters'],['x','costs','Cost Structure',7],['r','revenue','Revenue Streams',6]];
 const NAMES={};LAYOUT.forEach(l=>{NAMES[l[1]]=l[2];if(l[4])NAMES[l[4]]=l[5]});
@@ -42,7 +42,7 @@ function md(){let o=`# ${S.title}\n\n_Lean Canvas. Tags: [evidence] / [assumptio
 document.getElementById('exJson').onclick=()=>dl('lean-canvas.json',JSON.stringify(S,null,2),'application/json');
 document.getElementById('exMd').onclick=()=>dl('lean-canvas.md',md(),'text/markdown');
 document.getElementById('print').onclick=()=>window.print();
-document.getElementById('reset').onclick=()=>{if(confirm('Reset the canvas to the default Process Power content? Your edits will be lost.')){S=clone(DEFAULT);localStorage.removeItem(KEY);render()}};
+document.getElementById('reset').onclick=()=>{if(confirm('Reset the canvas to the default Digital Drumm content? Your edits will be lost.')){S=clone(DEFAULT);localStorage.removeItem(KEY);render()}};
 const SRC='https://www.cso.ie/en/releasesandpublications/ep/p-biiilb/businessinireland2024-insightsonthelifecycleofbusinesses/keyfindings/';
 const FOOT_MD=`Market note (estimate): about 750 Irish firms with 50+ staff in Cork and Kerry, estimated from the CSO 2024 national count (4,835 medium plus 958 large) × about 13% (Cork ~10%, Kerry ~3%). Source: ${SRC}\n`;
 document.getElementById('foot').innerHTML=`<b>Market note</b> <span class="tag assumption">estimate</span> — about <b>750</b> Irish firms with 50+ staff in Cork and Kerry, estimated from the CSO 2024 national count (4,835 medium plus 958 large) × about 13% (Cork ~10%, Kerry ~3%). Source: <a href="${SRC}" target="_blank" rel="noopener">CSO, Business in Ireland 2024 – key findings</a>.`;
