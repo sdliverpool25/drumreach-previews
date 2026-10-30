@@ -24,3 +24,5 @@ code{background:#f0eee9;border-radius:3px;padding:0 4px;font-size:12px}
 blockquote{margin:6px 0;padding:6px 10px;border-left:3px solid #f2c94c;background:#fffbea}
 @media (max-width:900px){.hero,.nlgrid{grid-template-columns:1fr}}
 @media print{.toc{display:none}.box.nl{break-inside:avoid}}
+/* simplified 30 Oct 2026: s6 full width, s8 single column */
+.box.nl.s6{grid-column:1/-1}.box.nl.s8{columns:auto}.box.nl.s3{columns:2 300px}.box.nl.s12{border-top-color:var(--red)}
