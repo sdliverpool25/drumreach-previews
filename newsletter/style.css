@@ -26,3 +26,4 @@ blockquote{margin:6px 0;padding:6px 10px;border-left:3px solid #f2c94c;backgroun
 @media print{.toc{display:none}.box.nl{break-inside:avoid}}
 /* simplified 30 Oct 2026: s6 full width, s8 single column */
 .box.nl.s6{grid-column:1/-1}.box.nl.s8{columns:auto}.box.nl.s3{columns:2 300px}.box.nl.s12{border-top-color:var(--red)}
+.box.nl.s2,.box.nl.s3,.box.nl.s4,.box.nl.s5,.box.nl.s6,.box.nl.s8,.box.nl.s9,.box.nl.s10,.box.nl.s11{grid-column:auto;columns:auto}
