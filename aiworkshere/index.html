@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en-IE">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AI Works Here — How people in Ireland are using AI at work</title>
+<meta name="description" content="A practical newsletter to help you become the AI expert on your team: automations, workflows and the latest tools, from Ireland.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--g9:#0b3d2e;--g8:#0f5139;--g1:#e8f2ec;--ac:#ffc93c;--ink:#14231c;--mut:#5b6b63;--r:14px}
+*{box-sizing:border-box;margin:0}
+body{font-family:"Plus Jakarta Sans",system-ui,sans-serif;color:var(--ink);background:#fff;line-height:1.6}
+a{color:var(--g8)}
+.w{max-width:1080px;margin:0 auto;padding:0 20px}
+section{padding:64px 0}
+h1,h2,h3{line-height:1.15;letter-spacing:-.02em}
+h1{font-size:clamp(2.2rem,6vw,3.6rem);font-weight:800}
+h2{font-size:clamp(1.6rem,4vw,2.3rem);margin-bottom:14px}
+.eyebrow{display:inline-block;font-weight:700;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--g8);margin-bottom:10px}
+nav{background:var(--g9);color:#fff}
+nav .w{display:flex;justify-content:space-between;align-items:center;padding-top:16px;padding-bottom:16px}
+.logo{font-weight:800;color:#fff;text-decoration:none;font-size:1.15rem}.logo b{color:var(--ac)}
+.btn{display:inline-block;background:var(--ac);color:var(--g9);font-weight:800;border:0;border-radius:10px;padding:14px 22px;font:inherit;font-weight:800;cursor:pointer;text-decoration:none}
+.btn:hover{filter:brightness(.95)}
+.hero{background:var(--g9);color:#fff;padding:48px 0 72px}
+.hero .w{display:grid;gap:40px}
+.hero .eyebrow{color:var(--ac)}
+.hero p.lead{font-size:1.15rem;opacity:.9;margin:18px 0 0;max-width:34em}
+.hero h1 span{color:var(--ac)}
+.form{background:#fff;color:var(--ink);border-radius:var(--r);padding:24px;box-shadow:0 20px 50px rgba(0,0,0,.25)}
+.form h3{margin-bottom:6px}.form .sm{font-size:.9rem;color:var(--mut);margin-bottom:14px}
+label.f{display:block;font-weight:600;font-size:.9rem;margin:10px 0 4px}
+input[type=text],input[type=email]{width:100%;padding:12px 14px;border:1.5px solid #cfdcd4;border-radius:10px;font:inherit}
+input:focus{outline:3px solid var(--ac);border-color:var(--g8)}
+.chk{display:flex;gap:10px;align-items:flex-start;font-size:.88rem;margin:14px 0}
+.chk input{margin-top:4px;width:18px;height:18px;accent-color:var(--g8)}
+.form .btn{width:100%}
+.legal{font-size:.8rem;color:var(--mut);margin-top:10px}
+.thanks{display:none;text-align:center;padding:20px 4px}
+.thanks h3{color:var(--g8);margin-bottom:8px}
+.grid{display:grid;gap:16px}
+.card{border:1.5px solid #dbe7e0;border-radius:var(--r);padding:22px;background:#fff}
+.card .n{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--g9);color:var(--ac);font-weight:800;margin-bottom:10px}
+.card h3{font-size:1.1rem;margin-bottom:6px}.card p{color:var(--mut);font-size:.95rem}
+.alt{background:var(--g1)}
+ul.who{list-style:none;padding:0;display:grid;gap:12px}
+ul.who li{background:#fff;border-radius:12px;padding:16px 18px;border-left:5px solid var(--g8)}
+.issue{background:var(--g9);color:#fff;border-radius:20px;padding:28px}
+.issue .eyebrow{color:var(--ac)}
+.issue p{opacity:.9}.issue ol{margin:14px 0 18px 20px}
+.prompt{background:#082e22;border:1px dashed #3f7a62;border-radius:12px;padding:16px;font-family:ui-monospace,Menlo,monospace;font-size:.88rem;white-space:pre-wrap;margin:10px 0}
+.copy{background:transparent;border:1.5px solid var(--ac);color:var(--ac);border-radius:8px;padding:8px 14px;font:inherit;font-weight:700;cursor:pointer}
+.share{text-align:center}.share p{max-width:36em;margin:0 auto 22px;color:var(--mut)}
+.about{display:grid;gap:24px;align-items:center}
+.avatar{width:110px;height:110px;border-radius:50%;background:var(--g9);color:var(--ac);display:grid;place-items:center;font-weight:800;font-size:2.2rem}
+.final{background:var(--g9);color:#fff}
+.final .w{display:grid;gap:32px;align-items:center}
+footer{background:#06281e;color:#b9cdc3;padding:28px 0;font-size:.88rem}
+footer .w{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}footer a{color:#fff}
+@media(min-width:800px){
+ .hero .w{grid-template-columns:1.2fr 1fr;align-items:center}
+ .grid.c5{grid-template-columns:repeat(3,1fr)}
+ ul.who{grid-template-columns:1fr 1fr}
+ .about{grid-template-columns:140px 1fr}
+ .final .w{grid-template-columns:1.2fr 1fr}
+}
+</style>
+</head>
+<body>
+<nav><div class="w"><a class="logo" href="#">AI Works <b>Here</b></a><a class="btn" href="#signup" style="padding:9px 16px">Subscribe</a></div></nav>
+
+<header class="hero"><div class="w">
+ <div>
+  <span class="eyebrow">A newsletter from Kerry</span>
+  <h1>Become the <span>AI expert</span> on your team.</h1>
+  <p class="lead"><strong>How people in Ireland are using AI at work.</strong> Practical automations, workflows and the latest tools, explained plainly for Irish businesses, so you can save hours each week and show your team how it's done.</p>
+ </div>
+ <div id="signup"></div>
+</div></header>
+
+<section><div class="w">
+ <span class="eyebrow">Every issue</span>
+ <h2>What you get each issue</h2>
+ <div class="grid c5">
+  <div class="card"><div class="n">1</div><h3>The big idea</h3><p>One shift in how work gets done with AI, and what it means for your role.</p></div>
+  <div class="card"><div class="n">2</div><h3>Automation of the week</h3><p>A step-by-step workflow with a copyable prompt you can use in minutes.</p></div>
+  <div class="card"><div class="n">3</div><h3>Tools worth trying</h3><p>A short list of new tools and features, including Microsoft 365 Copilot, that are worth your time.</p></div>
+  <div class="card"><div class="n">4</div><h3>From Ireland</h3><p>How Irish teams and businesses are actually putting AI to work.</p></div>
+  <div class="card"><div class="n">5</div><h3>Reader question</h3><p>Your questions, answered properly. Send one in and it might feature next.</p></div>
+ </div>
+</div></section>
+
+<section class="alt"><div class="w">
+ <span class="eyebrow">Who it's for</span>
+ <h2>Written for people doing the work</h2>
+ <ul class="who">
+  <li><strong>Staff at Irish SMEs</strong> who want to be the person the team asks about AI.</li>
+  <li><strong>Owners and managers</strong> of 15–50 person businesses looking for real time savings.</li>
+  <li><strong>Microsoft 365 and Copilot users</strong> who want more from the tools they already pay for.</li>
+  <li><strong>Busy, curious people</strong> who want practical steps, not hype.</li>
+ </ul>
+</div></section>
+
+<section><div class="w">
+ <div class="issue">
+  <span class="eyebrow">Issue #1 · Sample</span>
+  <h2>How to become the AI expert on your team</h2>
+  <p>Most teams don't need a data scientist. They need one person who's tried things, knows what works, and can show others. Issue 1 covers:</p>
+  <ol><li>The three tasks to automate first (and the ones to leave alone)</li><li>A simple way to share wins so your team actually adopts them</li><li>Staying on the right side of GDPR and company policy</li></ol>
+  <strong>Automation of the week: the meeting follow-up</strong>
+  <div class="prompt" id="p1">You are my assistant. From the meeting notes below, write a short follow-up email with: 1) decisions made, 2) actions with owner and due date, 3) open questions. Use plain Irish/UK English and keep it under 200 words.
+
+[paste notes here]</div>
+  <button class="copy" onclick="cp()">Copy prompt</button>
+ </div>
+</div></section>
+
+<section class="alt share"><div class="w">
+ <span class="eyebrow">Your story</span>
+ <h2>Share how your team uses AI</h2>
+ <p>Found a workflow that saves your team time? Tried something that didn't work? I'd love to hear it. The best stories get featured in From Ireland, with your permission.</p>
+ <a class="btn" href="mailto:hello@aiworkshere.ie?subject=How%20my%20team%20uses%20AI">Share your story</a>
+</div></section>
+
+<section><div class="w about">
+ <div class="avatar">SD</div>
+ <div><span class="eyebrow">About</span><h2>Hi, I'm Shane Drumm</h2>
+ <p>I'm an AI consultant based in Killarney, Co. Kerry. I help Irish businesses put AI to work with practical automations and workflows, often inside the Microsoft 365 tools they already use. AI Works Here is where I share what I'm learning, so you can put it to use too.</p></div>
+</div></section>
+
+<section class="final"><div class="w">
+ <div><h2>Get the next issue in your inbox</h2><p style="opacity:.9">Practical, Irish and free. Unsubscribe anytime.</p></div>
+ <div id="signup2"></div>
+</div></section>
+
+<footer><div class="w"><span>© 2026 AI Works Here · aiworkshere.ie · Killarney, Co. Kerry</span><span><a href="/privacy">Privacy</a> · <a href="mailto:hello@aiworkshere.ie">Contact</a></span></div></footer>
+
+<template id="tf">
+ <div class="form">
+  <form novalidate>
+   <h3>Join AI Works Here</h3><p class="sm">Free, practical, straight to your inbox.</p>
+   <label class="f">First name<input type="text" name="fn" autocomplete="given-name" required></label>
+   <label class="f">Email<input type="email" name="em" autocomplete="email" required></label>
+   <label class="chk"><input type="checkbox" required><span>I agree to receive the AI Works Here newsletter. Unsubscribe anytime.</span></label>
+   <button class="btn" type="submit">Subscribe free</button>
+   <p class="legal">Read our <a href="/privacy">privacy policy</a>. We never share your details.</p>
+  </form>
+  <div class="thanks" role="status"><h3>Thank you!</h3><p>You're on the list. Keep an eye on your inbox for issue #1.</p></div>
+ </div>
+</template>
+<script>
+['signup','signup2'].forEach(function(id){
+ var n=document.getElementById('tf').content.cloneNode(true);document.getElementById(id).appendChild(n);
+});
+document.querySelectorAll('.form form').forEach(function(f){
+ f.addEventListener('submit',function(e){e.preventDefault();if(!f.reportValidity())return;
+  var t=f.nextElementSibling;t.querySelector('h3').textContent='Thank you, '+f.fn.value.trim()+'!';f.style.display='none';t.style.display='block';});
+});
+function cp(){navigator.clipboard.writeText(document.getElementById('p1').innerText);var b=document.querySelector('.copy');b.textContent='Copied';setTimeout(function(){b.textContent='Copy prompt'},1500)}
+</script>
+</body>
+</html>
